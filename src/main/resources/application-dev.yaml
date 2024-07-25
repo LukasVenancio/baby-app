@@ -1,0 +1,96 @@
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+spring:
+  messages:
+    encoding: UTF-8
+  jpa:
+    hibernate:
+      ddl-auto: ${HIBERNATE_DDL:validate}
+    properties:
+      hibernate:
+        format_sql: true
+        order_inserts: true
+        order_updates: true
+        jdbc:
+          batch_size: 100
+    show-sql: true
+  mail:
+    enabled: ${MAIL_ENABLED}
+    from: ${MAIL_FROM}
+    host: ${MAIL_HOST}
+    password: ${MAIL_PASSWORD}
+    port: ${MAIL_PORT}
+    username: ${MAIL_USERNAME}
+    properties:
+      mail:
+        debug: true
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  thymeleaf:
+    preffix: classpathresource:/templates/
+    suffix: .html
+  datasource:
+    password: ${DB_PASSWORD}
+    username: ${DB_USERNAME}
+    url: ${DB_URL}
+    driver-class-name: org.postgresql.Driver
+  flyway:
+    baseline-on-migrate: true
+    enabled: ${MIGRATIONS_ENABLED:true}
+    locations: classpath:db.migration
+    url: ${DB_URL}
+    user: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+springdoc:
+  title: GROWING TOGETHER API
+  swagger-ui:
+    operationsSorter: method
+    disable-swagger-default-url: false
+    path: /swagger-ui.html
+    enable: true
+  api-docs:
+    enable: true
+  swagger-config:
+    title: GROWING TOGETHER
+    version: 1.0.0
+    info:
+      title: GROWING TOGETHER
+      version: 1.0.0
+    responses:
+      success:
+        204: 'No content'
+      error:
+        400: 'Problem with the data in the request'
+        403: 'Request violates some authorization rule'
+        404: 'Resource requested not found'
+        204: 'No content'
+        409: 'Duplicated Resource'
+        422: 'Request violates some business rule'
+        500: 'Some unexpected error has occurred'
+        502: 'Service is unavailable at the moment'
+server:
+  port:
+    ${PORT:8080}
+home-care-baby:
+  base-url: ${BASE_URL:http}
+  jwt:
+    secret: ${JWT_SECRET}
+    expiration: ${JWT_EXPIRATION}
+    issuer: ${JWT_ISSUER}
+  front:
+    url: ${FRONT_URL}
+    origin: ${ALLOWED_ORIGIN:*}
+youtube:
+  api-url: ${YOUTUBE_API_URL}
+  key: ${YOUTUBE_KEY}
+  channel-id: ${YOUTUBE_CHANNEL_ID}

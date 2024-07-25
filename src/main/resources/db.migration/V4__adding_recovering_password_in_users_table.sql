@@ -1,0 +1,2 @@
+ALTER TABLE users
+    ADD COLUMN recovering_password BOOLEAN NOT NULL DEFAULT FALSE;

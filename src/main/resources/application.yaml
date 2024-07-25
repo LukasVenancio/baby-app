@@ -1,0 +1,15 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+spring:
+  mvc:
+    locale:pt_BR
+  messages:
+    encoding: UTF-8
+  profiles:
+    active: ${PROFILE:dev}
+  jpa:
+    hibernate:
+      ddl-auto: ${HIBERNATE_DDL:none}

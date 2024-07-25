@@ -1,0 +1,3 @@
+ALTER TABLE users
+    ADD COLUMN birth_date TIMESTAMP NOT NULL,
+    ADD COLUMN marital_status SMALLINT NOT NULL;
